@@ -11,10 +11,13 @@
   <body id="body">
     <main>
         <h1>Algo Visualisation</h1>
+        <p>Click to get a random array yo be sorted:</p>
         <button id="random" onclick="random()">Random Array</button>
-        <h1>[<input id="arrInput" type="text" placeholder="insert comma separated numbers i.e. 1,2,5,4,3">]</h1>
+        <p>Type in numbers you want sorted:</p>
+        <div id="arry">[<input id="arrInput" type="text" placeholder="insert comma separated numbers i.e. 1,2,5,4,3">]</div>
         
         <h2>Sorting Algorithms</h2>
+        <p>Click on Any of the bottons below to visualize how they work:</p>
         <div id="section">
           
           <button class="algobtn" onclick="show('insertion')">Insertion Sort</button>
@@ -29,10 +32,11 @@
             </div>
             <h2 id ='vizhead'>Algo</h2>
             <canvas id = 'canvas'></canvas>
+            <button class="rplybtn" onclick="replay()">Replay</button>
             <h3>Worst case Time Complexity</h3>
-            <h4 id="tc">Worst case Time Complexity</h4>
+            <p id="tc">Worst case Time Complexity</p>
             <h3>Worst case space Complexity</h3>
-            <h4 id="sc">Worst case Time Complexity</h4>
+            <p id="sc">Worst case Time Complexity</p>
           </div>
       </div>
 	

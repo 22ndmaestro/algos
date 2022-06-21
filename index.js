@@ -47,14 +47,14 @@ function sleep(milliseconds) {
 
   function draw(arry){
     var cur = arry; //[pos];
-    var distance = 10;
+    var distance = 8;
     var stDistance = 10;
     var width = 10;
 
     cur.forEach( (height, dex) => {
         ctx.fillStyle = "green";
         ctx.fillRect(distance, stDistance, width,height*20);
-        distance += width + 10;
+        distance += width + 8;
     });
 }
 
@@ -290,7 +290,7 @@ function algo(params,input) {
         document.getElementById('sc').innerHTML = 'O(n)';
     }
     canvas.height = Math.max.apply(null, input)*20+20;
-    canvas.width = 300; //input.length*20;
+    canvas.width = input.length*19;
     animation();
 }
 
@@ -307,4 +307,9 @@ function random() {
         arr[i] = Math.floor((Math.random() * 15) + 1); 
     }
     document.getElementById('arrInput').value= arr;
+}
+function replay() {
+    var params = document.getElementById('vizhead').innerHTML.split(' ')[0].toLowerCase();
+    show(params);
+    
 }
