@@ -4,22 +4,12 @@ var ctx;
 var rectLists;
 var x = 0;
 var z = 0;
+var continueAnimating = true;
 
 //setup canvas
 window.addEventListener("load", () => {
     canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
-
-    //Array to be sorted
-    var input = [10, 7,7,5,6,3,4,1,2];
-    //rectLists = insertionSort(input); //insertionSort instantiation
-    //rectLists = selectionSort(input); //SelectionSort instantiation
-    //rectLists = heapSort(input); //HeapSort instantiation
-    rectLists = mergeSorter(input);
-    canvas.height = Math.max.apply(null, input)*20+20;
-    canvas.width = input.length*40;
-    animation();
-    
 });
 
 
@@ -37,34 +27,29 @@ function sleep(milliseconds) {
 
 
   function animation(){
-    requestAnimationFrame(animation);
-    //const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
-    /*
-    arry.forEach(async (item) => {
-        ctx.clearRect(0,0, window.innerWidth, window.innerHeight);
-        this.draw(item);
-        await sleep(5000);
-        
-    });
-    */
+    if(!continueAnimating){return;}
+
     ctx.clearRect(0,0, window.innerWidth, window.innerHeight);
     draw(rectLists[x]);
     z+=1
-    if (z> 60) {
+    if (z> 20) {
         x+=1;
         z = 0;
-        //ctx.clearRect(0,0, window.innerWidth, window.innerHeight);
     }
     if (x>=rectLists.length) {
         x = 0;
+        continueAnimating = false;
     }
+
+    requestAnimationFrame(animation);
+    
   }
 
   function draw(arry){
     var cur = arry; //[pos];
     var distance = 10;
     var stDistance = 10;
-    var width = 20;
+    var width = 10;
 
     cur.forEach( (height, dex) => {
         ctx.fillStyle = "green";
@@ -94,7 +79,7 @@ function insertionSort(arr){
         };
         //
     }
-
+    rectList.push(arr.slice());
     return rectList;
 
 }
@@ -118,7 +103,7 @@ function selectionSort(arr){
         };
         //
     }
-
+    rectList.push(arr.slice());
     return rectList;
 
 }
@@ -180,7 +165,6 @@ function heapSort(arr){
     return rectList;
 
 }
-
 
 
 function mergeSorter(arr) {
@@ -271,4 +255,56 @@ function mergeSorter(arr) {
     rectList.push(arr.slice());
     return rectList;
     
+}
+
+function show(params) {
+    var text = document.getElementById('arrInput').value;
+    const arr = text.split(",").map(element => { return Number(element);
+      });
+    document.getElementById('modal_container').classList.add("show");
+    algo(params,arr);
+    
+}
+
+function algo(params,input) {
+    continueAnimating = true;
+    if (params == 'insertion') {
+        rectLists = insertionSort(input); //insertionSort instantiation
+        document.getElementById('vizhead').innerHTML = 'Insertion Sort';
+        document.getElementById('tc').innerHTML = 'O(n^2)';
+        document.getElementById('sc').innerHTML = 'O(1)';
+    } else if (params == 'selection'){
+        rectLists = selectionSort(input); //SelectionSort instantiation
+        document.getElementById('vizhead').innerHTML = 'Selection Sort';
+        document.getElementById('tc').innerHTML = 'O(n^2)';
+        document.getElementById('sc').innerHTML = 'O(1)';
+    } else if (params == 'heap'){
+        rectLists = heapSort(input); //HeapSort instantiation
+        document.getElementById('vizhead').innerHTML = 'Heap Sort';
+        document.getElementById('tc').innerHTML = 'O(nlog(n))';
+        document.getElementById('sc').innerHTML = 'O(1)';
+    } else if (params == 'merge'){
+        rectLists = mergeSorter(input);
+        document.getElementById('vizhead').innerHTML = 'Merge Sort';
+        document.getElementById('tc').innerHTML =  'O(nlog(n))';
+        document.getElementById('sc').innerHTML = 'O(n)';
+    }
+    canvas.height = Math.max.apply(null, input)*20+20;
+    canvas.width = 300; //input.length*20;
+    animation();
+}
+
+function closeit() {
+    document.getElementById('modal_container').classList.remove("show");
+    continueAnimating = false;
+    x = 0;
+}
+
+function random() {
+    var arrSize = Math.floor((Math.random() * 11) + 5);
+    var arr = new Array(arrSize);
+    for (let i = 0; i < arrSize; i++) {
+        arr[i] = Math.floor((Math.random() * 15) + 1); 
+    }
+    document.getElementById('arrInput').value= arr;
 }

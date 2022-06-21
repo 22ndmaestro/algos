@@ -1,8 +1,67 @@
 #canvas{
-background-color: white;
+background-color: rgba(0, 0, 0, 0.413);
 
 }
 
 #body {
     background-color: #fafafa;
+    justify-content: center;
+    font-family: Arial;
+  }
+
+  .modal-container {
+    background-color: rgba(255, 235, 205, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+  }
+  .modal-container.show {
+    pointer-events: auto;
+    opacity: 1;
+  }
+  .modal {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 80vw;
+    padding: 30px;
+    max-width: 100%;
+    justify-content: center;
+  }
+  .algobtn{
+    width: 150px;
+    height: 150px;
+    border-radius: 6px;    
+  }
+  #section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between
+  }
+
+  #close{
+    border-radius: 10px;
+    background-color: red;
+    align-self: flex-end;
+  }
+
+  #arrInput{
+    height: 22px;
+    width: 300px;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  #vizdiv{
+    width: 100%;
+    display: flex;
+    justify-content: space-between
   }

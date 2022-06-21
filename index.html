@@ -10,8 +10,32 @@
   </head>
   <body id="body">
     <main>
-        <h1>visualisation</h1>
-	<canvas id = 'canvas'></canvas>
+        <h1>Algo Visualisation</h1>
+        <button id="random" onclick="random()">Random Array</button>
+        <h1>[<input id="arrInput" type="text" placeholder="insert comma separated numbers i.e. 1,2,5,4,3">]</h1>
+        
+        <h2>Sorting Algorithms</h2>
+        <div id="section">
+          
+          <button class="algobtn" onclick="show('insertion')">Insertion Sort</button>
+          <button class="algobtn" onclick="show('selection')">Selection Sort</button>
+          <button class="algobtn" onclick="show('heap')">Heap Sort</button>
+          <button class="algobtn" onclick="show('merge')">Merge Sort</button>
+        </div>
+        <div class="modal-container" id="modal_container">
+          <div class="modal">
+            <div id="vizdiv">
+              <div></div><button class="btn cancel" id='close' onclick="closeit()">x</button>
+            </div>
+            <h2 id ='vizhead'>Algo</h2>
+            <canvas id = 'canvas'></canvas>
+            <h3>Worst case Time Complexity</h3>
+            <h4 id="tc">Worst case Time Complexity</h4>
+            <h3>Worst case space Complexity</h3>
+            <h4 id="sc">Worst case Time Complexity</h4>
+          </div>
+      </div>
+	
     </main>
 	<script src="index.js"></script>
   </body>
